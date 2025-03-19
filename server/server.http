@@ -1,0 +1,93 @@
+@server_HostAddress = http://localhost:5297
+
+### Step 1: Create a test user (user1)
+POST {{server_HostAddress}}/api/Auth/register
+Content-Type: application/json
+
+{
+    "username": "user1",
+    "password": "Test@123"
+}
+
+### Step 2: Create another test user (user2)
+POST {{server_HostAddress}}/api/Auth/register
+Content-Type: application/json
+
+{
+    "username": "user2",
+    "password": "Test@123"
+}
+
+### Step 3: Login as user1 to get token
+POST {{server_HostAddress}}/api/Auth/login
+Content-Type: application/json
+
+{
+    "username": "user1",
+    "password": "Test@123"
+}
+
+### Step 4: Create a recipe as user1 (replace USER1_TOKEN with the token from login)
+POST {{server_HostAddress}}/api/Recipes
+Content-Type: application/json
+Authorization: Bearer USER1_TOKEN
+
+{
+    "recipeName": "User1's Chocolate Cake",
+    "imageUrl": "https://example.com/chocolate-cake.jpg",
+    "ingredients": "2 cups flour, 2 cups sugar, 3/4 cup cocoa, 2 eggs, 1 cup milk",
+    "instructions": "1. Mix dry ingredients\n2. Add wet ingredients\n3. Bake at 350°F",
+    "category": "Dessert"
+}
+
+### Step 5: Login as user2 to get token
+POST {{server_HostAddress}}/api/Auth/login
+Content-Type: application/json
+
+{
+    "username": "user2",
+    "password": "Test@123"
+}
+
+### Step 6: Create a recipe as user2 (replace USER2_TOKEN with the token from login)
+POST {{server_HostAddress}}/api/Recipes
+Content-Type: application/json
+Authorization: Bearer USER2_TOKEN
+
+{
+    "recipeName": "User2's Vanilla Cake",
+    "imageUrl": "https://example.com/vanilla-cake.jpg",
+    "ingredients": "2 cups flour, 2 cups sugar, 2 eggs, 1 cup milk, 1 tbsp vanilla extract",
+    "instructions": "1. Mix dry ingredients\n2. Add wet ingredients\n3. Bake at 350°F",
+    "category": "Dessert"
+}
+
+### Step 7: Get user1's recipes (using user1's token)
+GET {{server_HostAddress}}/api/Recipes/my
+Authorization: Bearer USER1_TOKEN
+
+### Step 8: Get user2's recipes (using user2's token)
+GET {{server_HostAddress}}/api/Recipes/my
+Authorization: Bearer USER2_TOKEN
+
+### Step 9: Try to get user2's recipes using user1's token (should fail)
+GET {{server_HostAddress}}/api/Recipes/user/2
+Authorization: Bearer USER1_TOKEN
+
+### Update a recipe (replace RECIPE_ID with an actual recipe ID)
+PUT {{server_HostAddress}}/api/Recipes/RECIPE_ID
+Content-Type: application/json
+Authorization: Bearer YOUR_TOKEN_HERE
+
+{
+    "id": RECIPE_ID,
+    "recipeName": "Updated Recipe Name",
+    "imageUrl": "https://example.com/updated-image.jpg",
+    "ingredients": "Updated ingredients list",
+    "instructions": "Updated cooking instructions",
+    "category": "Updated Category"
+}
+
+### Delete a recipe (replace RECIPE_ID with an actual recipe ID)
+DELETE {{server_HostAddress}}/api/Recipes/RECIPE_ID
+Authorization: Bearer YOUR_TOKEN_HERE
