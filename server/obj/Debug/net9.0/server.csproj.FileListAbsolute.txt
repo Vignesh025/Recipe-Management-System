@@ -234,3 +234,4 @@ E:\Wipro\Capstone\FullStackApp\server\obj\Debug\net9.0\compressed\a3ygkwa5zy-2z0
 E:\Wipro\Capstone\FullStackApp\server\obj\Debug\net9.0\compressed\nezrqnk58p-muycvpuwrr.gz
 E:\Wipro\Capstone\FullStackApp\server\obj\Debug\net9.0\compressed\v0zgfp0y55-87fc7y1x7t.gz
 E:\Wipro\Capstone\FullStackApp\server\obj\Debug\net9.0\compressed\yfc7ypekbg-mlv21k5csn.gz
+E:\Wipro\Capstone\FullStackApp\server\obj\Debug\net9.0\server.sourcelink.json

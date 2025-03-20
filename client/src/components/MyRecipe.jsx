@@ -102,6 +102,7 @@ function MyRecipeDetailModal({ show, onHide, recipe }) {
       size="lg"
         aria-labelledby="recipe-modal"
       centered
+      className='view-modal'
     >
       <Modal.Header closeButton>
           <Modal.Title id="recipe-modal">

@@ -123,7 +123,7 @@ const AddRecipeModal = ({ show, onHide }) => {
   };
 
   return (
-    <Modal show={show} onHide={onHide} size="lg" centered>
+    <Modal show={show} onHide={onHide} size="lg" centered className='view-modal'>
       <Modal.Header closeButton>
         <Modal.Title>Add New Recipe</Modal.Title>
       </Modal.Header>
